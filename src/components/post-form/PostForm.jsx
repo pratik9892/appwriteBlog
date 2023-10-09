@@ -6,6 +6,7 @@ import {useNavigate} from 'react-router-dom'
 import service from '../../appwrite/config'
 import Select from '../Select'
 
+
 function PostForm({post}) {    
     const {register,handleSubmit,watch,setValue,control,getValues} = useForm({
         defaultValues:{
@@ -44,6 +45,7 @@ function PostForm({post}) {
                 data.featuredImage = fileId
                 const dbPost = await service.createPost({
                     ...data,userId:userData.userData.$id,
+                    
                 })
 
                 if(dbPost){
@@ -78,7 +80,7 @@ function PostForm({post}) {
     },[watch,slugTransform,setValue])
 
     return (
-        <form onSubmit={handleSubmit(submit)} className="flex flex-wrap">
+        <form onSubmit={handleSubmit(submit)} className="flex flex-wrap bg-white">
         <div className="w-2/3 px-2">
             <Input
                 label="Title :"
@@ -120,7 +122,7 @@ function PostForm({post}) {
                 className="mb-4"
                 {...register("status", { required: true })}
             />
-            <Button type="submit" bgColor={post ? "bg-green-500" : undefined} className="w-full">
+            <Button type="submit" bgColor={post ? "bg-green-500" : undefined} className="w-full rounded-full">
                 {post ? "Update" : "Submit"}
             </Button>
         </div>

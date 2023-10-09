@@ -31,7 +31,7 @@ useEffect( () => {
 
 return !loading ? (
   <div className=' '>
-    <div className="">
+    <div className="font-mono bg-white">
       <Header/>
       <main>
         <Outlet/>
